@@ -2,29 +2,48 @@ puts "Welcome! To Do list Project"
 
 # Main Menu
 puts "1. Add Task"
-puts "2. View Task"
-puts "3. Mark task as 'DONE'"
-puts "4. Delete Task"
-puts "5. Exit"
+puts "2. View current tasks"
+puts "3. View Finished tasks"
+puts "4. Mark task as 'DONE'"
+puts "5. Rename task"
+puts "6. Delete Task"
+puts "7. Exit"
 
-# View Task menu
-#Example task (for now)
-my_tasks = {
-  1 => "Clean",
-  2 => "Workout",
-  3 =>"Study"
-}
+#tasks placeholder
+my_tasks = []
+complete_tasks = []
 
-puts "Pick a number 1~5: "
-action = gets.chomp
+# Menu for actions from 1 to 5
+loop do
 
-if action == "1"
-  puts "What task do you want to add?: "
+  puts "Which action? 1-7"
+  action = gets.chomp
+
+
+  case action
+  when "1"
+    puts "What task to add?: "
     new_task = gets.chomp
-  puts "New Task '#{new_task}' has been Added"
-elsif action == "2"
-  puts "This is all your current tasks"
-  puts my_tasks
-else
-  return "There is no action for that number"
+    my_tasks << new_task
+    puts "New '#{new_task}' task has been added "
+
+  when "2"
+    puts "This are all your current tasks"
+    puts my_tasks.inspect
+
+  when "3" #  unfunctional
+    puts "Current Tasks"
+    puts my_tasks.inspect
+
+    puts "Which task to mark as done?"
+      mark_task = gets.chomp
+    puts "Task Successfully completed"
+
+  when "7"
+    puts "Quitting To do list app"
+    break
+
+  else
+    puts "Please input between 1-5"
+  end
 end
